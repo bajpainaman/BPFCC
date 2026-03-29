@@ -1,0 +1,9 @@
+[package]
+name = "bpfcc"
+version = "0.1.0"
+edition = "2021"
+description = "BPF-to-GPU JIT Compiler — translates Solana BPF/SBF bytecode to NVIDIA PTX"
+license = "MIT"
+
+[dependencies]
+sha2 = "0.10"
