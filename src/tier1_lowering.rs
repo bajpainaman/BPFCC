@@ -203,9 +203,9 @@ pub fn lower(bytecode: &[u8], analysis: &AnalysisResult) -> Result<IrProgram, St
 fn translate_insn(
     insn: &BpfInstruction,
     pc: usize,
-    _instructions: &[BpfInstruction],
+    instructions: &[BpfInstruction],
     region_map: &mut HashMap<u8, MemRegion>,
-    _n: usize,
+    n: usize,
 ) -> Result<Vec<IrOp>, String> {
     let dst = insn.dst;
     let src = insn.src;
@@ -442,9 +442,9 @@ fn translate_insn(
 fn build_terminator(
     insn: &BpfInstruction,
     pc: usize,
-    _block_end: usize,
+    block_end: usize,
     pc_to_block: &HashMap<usize, usize>,
-    _region_map: &HashMap<u8, MemRegion>,
+    region_map: &HashMap<u8, MemRegion>,
     ops: &mut Vec<IrOp>,
     _block_idx: usize,
     _num_blocks: usize,
@@ -584,8 +584,8 @@ fn is_conditional_jump_op(op: u8) -> bool {
 fn is_block_terminator(
     opcode: u8,
     cursor: usize,
-    _block_end: usize,
-    _instructions: &[BpfInstruction],
+    block_end: usize,
+    instructions: &[BpfInstruction],
 ) -> bool {
     if !is_jump_or_exit(opcode) {
         return false;

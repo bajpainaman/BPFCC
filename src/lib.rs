@@ -1,3 +1,4 @@
+#![allow(unused_variables, unused_imports, dead_code)]
 //! BPFCC — BPF-to-GPU JIT Compiler
 //!
 //! Translates Solana BPF/SBF smart contract bytecode into NVIDIA PTX assembly

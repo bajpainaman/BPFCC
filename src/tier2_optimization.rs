@@ -65,7 +65,7 @@ pub fn build_dom_tree(program: &IrProgram) -> DomTree {
     }
 
     // Build predecessor lists.
-    let _preds = build_predecessors(program);
+    let preds = build_predecessors(program);
 
     // idom[b] stores the immediate dominator of b as Option<usize>.
     // None means "not yet computed".
@@ -670,7 +670,7 @@ fn dce_pass(program: &mut IrProgram) -> bool {
 
     // Global liveness: sets of registers live at the entry of each block.
     // We iterate backwards over a topological order until fixpoint.
-    let _preds = build_predecessors(program);
+    let preds = build_predecessors(program);
 
     // Compute successors for all blocks.
     let succs: Vec<Vec<usize>> = (0..n)

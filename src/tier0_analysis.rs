@@ -3,7 +3,7 @@ use std::collections::{HashMap, HashSet};
 use crate::bpf::opcodes::*;
 use crate::bpf::{parse_program, BpfInstruction};
 use crate::types::{
-    AnalysisResult, BasicBlock, ControlFlowGraph, EdgeType,
+    AnalysisResult, BasicBlock, BranchCondition, ControlFlowGraph, EdgeType,
 };
 use crate::syscall_ids::*;
 
@@ -23,7 +23,6 @@ fn classify_syscall(id: u32) -> SyscallClass {
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 enum SyscallClass {
     GpuNative,
-    #[allow(dead_code)]
     Noop,
     Reject,
 }
